@@ -1,5 +1,6 @@
 import authRoutes from './routes/auth.routes';
 import messageRoutes from './routes/message.routes';
+import userRoutes from './routes/user.routes';
 import cookieParser from 'cookie-parser';
 
 import express, { Express, Request, Response } from "express";
@@ -21,6 +22,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
+app.use("/api/users", userRoutes);
 
 app.listen(port, () => {
   connectToMongoDB();
