@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import toast from "react-hot-toast"
-import { useAuthContext } from '../src/context/AuthContext'
+import { useAuthContext } from '../../frontend/src/context/AuthContext'
 import { useSignUpParams } from '../src/types'
 
 const useLogIn =  () => {
@@ -24,9 +24,11 @@ const useLogIn =  () => {
         }
       )
       const data = await res.json();
-      
-      if (data.error) {
-        throw new Error(data.error)
+
+      if (data["error"]) {
+        console.log("The data at login now", data["error"])
+        toast.error((data.error))
+        return;
       }
        
       // Set Local Storage
@@ -34,7 +36,6 @@ const useLogIn =  () => {
       setAuthuser(data); 
       
     } catch ( error) {
-      console.log(error)
       toast.error((error as Error).message)
     }finally{
       setLoading(false);

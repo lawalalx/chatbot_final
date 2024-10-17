@@ -38,8 +38,11 @@ const useSignUp =  () => {
         }
       )
       const data = await res.json();
-      if (data.error) {
-        throw new Error(data.error)
+
+      if (data["error"]) {
+        console.log("The data at signup now", data["error"])
+        toast.error((data.error))
+        return;
       }
        
       // Set Local Storage

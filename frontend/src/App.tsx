@@ -9,6 +9,7 @@ import { useAuthContext } from './context/AuthContext';
 function App() {
 
   const {authUser} = useAuthContext();
+  console.log("This is the Auth user from the App.tsx", authUser);
   
 
   return (
