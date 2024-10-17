@@ -9,7 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: ["http://localhost:3000"],
+        origin: ["https://chatbot-final-c7fd.onrender.com"],
         methods: ["GET", "POST"],
     },
 });
