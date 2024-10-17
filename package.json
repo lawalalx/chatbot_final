@@ -1,11 +1,12 @@
 {
   "name": "chatapp_portfolio_project",
   "version": "1.0.0",
-  "main": "backend/server.js",
+  "main": "backend/dist/server.js",
   "scripts": {
-    "build": "npx tsc",
-    "start": "node dist/server.js",
-    "dev": "nodemon backend/server.ts"
+    "server": "nodemon backend/dist/server.js",
+		"start": "nodemon backend/dist/server.js",
+    "dev": "nodemon backend/dist/server.js",
+		"build": "npx tsc && npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +28,7 @@
     "@types/express": "^5.0.0",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.7.4",
+    "@types/socket.io": "^3.0.1",
     "concurrently": "^9.0.1",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",

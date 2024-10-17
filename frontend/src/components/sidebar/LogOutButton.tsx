@@ -15,7 +15,7 @@ const LogOutButton = () => {
         <BiLogOut  size={20}
         />
         </span>) :
-        <Spinner loading={loading} />
+        <Spinner loading={loading} width={20} height={20}/>
       }
       
     </div>

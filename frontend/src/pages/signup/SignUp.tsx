@@ -98,7 +98,7 @@ const SignUp =  () => {
           >
             {
               loading ? (
-                <Spinner loading={loading} />
+                <Spinner loading={loading} width={20} height={20}/>
               ) : "sign Up"
             }
           </button>

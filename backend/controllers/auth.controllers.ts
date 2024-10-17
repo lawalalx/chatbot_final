@@ -12,14 +12,6 @@ export const signUp = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    console.log(
-      "fullName:", fullName,
-      "username:", username,
-      "password:", password,
-      "confirmPassword:", confirmPassword,
-      "gender", gender,
-    )
-
     const user = await User.findOne({ username})
     if (user) {
       res.status(400).json({ message: "User already exists" });
@@ -69,12 +61,14 @@ export const signUp = async (req: Request, res: Response): Promise<void> => {
 
 
 
-export const logIn = async (req: Request, res: Response) => {
+export const logIn = async (req: Request, res: Response): Promise<void> => {
   const bcrypt = require('bcryptjs');
   try {
     const { username, password }: UserType = req.body;
 
     const user = await User.findOne({ username });
+
+    console.log("Just Logged In User", user);
     const isPasswordCorrect = await bcrypt.compare(password, user?.password);
 
     if (user && !isPasswordCorrect) {

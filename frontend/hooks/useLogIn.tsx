@@ -10,9 +10,7 @@ const useLogIn =  () => {
    
   const login = async( {username, password}: useSignUpParams) => {
 
-    const success = handleInputErrors({ username, password }); 
-
-    console.log("From the hook", username, password)
+    const success = handleInputErrors({ username, password });
     
     if  (!success) return;
 
@@ -26,7 +24,6 @@ const useLogIn =  () => {
         }
       )
       const data = await res.json();
-      console.log(data)
       
       if (data.error) {
         throw new Error(data.error)
@@ -34,7 +31,7 @@ const useLogIn =  () => {
        
       // Set Local Storage
       localStorage.setItem("chat-user", JSON.stringify(data));
-      setAuthuser(null); 
+      setAuthuser(data); 
       
     } catch ( error) {
       console.log(error)

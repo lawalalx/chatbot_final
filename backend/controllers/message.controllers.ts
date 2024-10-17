@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import Conversation from "../models/Conversation.model";
 import Message from "../models/Message.model";
+import { getReceiverSocketId, io } from '../socket/socket'; 
 
 
 export const sendMessage = async (req: Request, res: Response): Promise<void> => {
@@ -38,12 +39,18 @@ export const sendMessage = async (req: Request, res: Response): Promise<void> =>
     if (conversation) {
       conversation.messages.push(newMessage._id);
       // Save in parallel
+    }
+    console.log("Conversation before save:", conversation);
+    await Promise.all([newMessage.save(), conversation.save()]);
 
-      console.log("Conversation before save:", conversation);
-      await Promise.all([newMessage.save(), conversation.save()]);
+    // SOCKET IO FUNCTIONALITY WILL GO HERE
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if (receiverSocketId) {
+      // io.to(<socket_id>).emit() used to send events to specific client
+      io.to(receiverSocketId).emit("newMessage", newMessage);
     }
 
-    res.status(201).json({ message: `Message Sent: ${newMessage}` });
+    res.status(201).json({ newMessage });
 
   } catch (error) {
     console.log("error", error);

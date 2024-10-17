@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import toast from "react-hot-toast"
-import { useAuthContext } from '../src/context/AuthContext'
+import { useAuthContext } from '../src/context/AuthContext';
 import { useSignUpParams } from '../src/types';
 
 

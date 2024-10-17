@@ -2,14 +2,16 @@ import { Circles } from 'react-loader-spinner'
 
 interface SpinnerProps {
   loading: boolean
+  width: number
+  height: number
 }
 
-const Spinner = ( {loading}: SpinnerProps ) => {
+const Spinner = ( {loading, width, height}: SpinnerProps ) => {
   return (
     <>
       <Circles
-        height="20"
-        width="20"
+        width={width}
+        height={height}
         color="#4fa94d"
         ariaLabel="circles-loading"
         wrapperStyle={{}}

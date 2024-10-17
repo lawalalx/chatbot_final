@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import toast from "react-hot-toast"
 import { useAuthContext } from '../src/context/AuthContext'
-import { useSignUpParams } from '../src/types'
+// import { useSignUpParams } from '../src/types'
 
 const useLogOut =  () => {
 
@@ -26,7 +26,7 @@ const useLogOut =  () => {
       )
       const data = await res.json();
       console.log(data)
-      
+
       if (data.error) {
         throw new Error(data.error)
       }
@@ -53,24 +53,24 @@ export default useLogOut
 
 
 
-// Handle credentials fomalities
-const handleInputErrors = ({
-  fullName, username, password, confirmPassword, gender
-}: useSignUpParams)=> {
-  if (!fullName || !username || !password || !confirmPassword || !gender) {
-    toast.error("Please fill all fields")
-    return false;
-  }
+// // Handle credentials fomalities
+// const handleInputErrors = ({
+//   fullName, username, password, confirmPassword, gender
+// }: useSignUpParams)=> {
+//   if (!fullName || !username || !password || !confirmPassword || !gender) {
+//     toast.error("Please fill all fields")
+//     return false;
+//   }
 
-  if (password !== confirmPassword) {
-    toast.error("Password do not match");
-    return false;
-  }
+//   if (password !== confirmPassword) {
+//     toast.error("Password do not match");
+//     return false;
+//   }
 
-  if (password.length < 6) {
-    toast.error("Password must be at least 6 characters")
-  }
+//   if (password.length < 6) {
+//     toast.error("Password must be at least 6 characters")
+//   }
 
-  return true;
+//   return true;
 
-}
+// }

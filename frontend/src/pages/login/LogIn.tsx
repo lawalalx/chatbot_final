@@ -63,8 +63,8 @@ const Login = () => {
           >
             {
               loading ? (
-                <Spinner loading={loading} />
-              ) : "sign Up"
+                <Spinner loading={loading} height={20} width={20}/>
+              ) : "Log In"
             }
           </button>
         </form>
